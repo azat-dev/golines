@@ -1,6 +1,8 @@
-module github.com/segmentio/golines
+module github.com/azat-dev/golines
 
 go 1.21
+
+replace github.com/segmentio/golines => github.com/azat-dev/golines v0.12.2
 
 require (
 	github.com/dave/dst v0.27.3
