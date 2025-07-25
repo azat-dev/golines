@@ -401,13 +401,16 @@ func (s *Shortener) formatDecl(decl dst.Decl) {
 
 // formatFieldList formats a field list in a function declaration.
 func (s *Shortener) formatFieldList(fieldList *dst.FieldList) {
-	for f, field := range fieldList.List {
-		if f == 0 {
+	if fieldList == nil || len(fieldList.List) == 0 || len(fieldList.List) == 1 {
+		return
+	}
+
+	for i, field := range fieldList.List {
+		if i == 0 {
 			field.Decorations().Before = dst.NewLine
 		} else {
-			field.Decorations().Before = dst.None
+			field.Decorations().Before = dst.NewLine
 		}
-
 		field.Decorations().After = dst.NewLine
 	}
 }
